@@ -2,8 +2,10 @@ const express=require('express');
 const form=require('./routes/form');
 const todo=require('./routes/todo');
 const auth=require('./routes/auth');
+const product=require('./routes/product');
 const bodyParser=require('body-parser');
 const path=require('path');
+const mongoose=require('./models/connection');
 const { verify } = require('./middlewares/auth');
 const app=express();
 app.use((req,res,next)=>{{
@@ -23,5 +25,6 @@ app.use('/form',form);
 
 app.use('/todo',verify,todo);
 app.use('/auth',auth);
+app.use('/product',product);
 app.listen(3000);
 
